@@ -6,12 +6,12 @@
     function Cards($rootScope, swapiService){
         function controller($scope){
             angular.extend(this, {
-                'resource': {}
+                'items': []
             });
 
             // Listen for the data broadcast
             $rootScope.$on('resourceSelected', function(event, data){
-                this.resource = data;
+                this.items.unshift(data);
                 console.log( data );
             }.bind(this));
         }

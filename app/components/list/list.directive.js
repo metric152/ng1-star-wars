@@ -4,9 +4,13 @@
     List.$inject = ['swapiService'];
 
     function List(swapiService){
+        function displayItem(type, item){
+            console.log( type, item );
+        }
+
         function controller($scope){
             angular.extend(this, {
-
+                'displayItem': displayItem
             });
         }
 

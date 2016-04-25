@@ -1,8 +1,8 @@
-<div class="row">
+<div class="row" ng-repeat="item in cardsCtrl.items">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-        <span ng-if="cardsCtrl.resource.count">
-            <list resource="cardsCtrl.resource"></list>
+        <span ng-if="item.count">
+            <list resource="item"></list>
         </span>
         <!-- <div class="card card-block">
             <img alt="Place holder text" src="http://placehold.it/500x200" class="card-img-top" />
