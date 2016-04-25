@@ -10,26 +10,14 @@
         <script type="text/javascript" src="bower_components/xyz-angular-swapi/dist/xyz-angular-swapi.min.js"></script>
 
         <script type="text/javascript" src="app/app.js"></script>
+        <script type="text/javascript" src="app/components/container/container.directive.js"></script>
         <script type="text/javascript" src="app/components/header/header.directive.js"></script>
+        <script type="text/javascript" src="app/components/cards/cards.directive.js"></script>
+        <script type="text/javascript" src="app/components/list/list.directive.js"></script>
         <!-- <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
     </head>
     <body ng-app="StarWarsApi">
-        <div class="container">
-            <header></header>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="card card-block">
-                        <img alt="Place holder text" src="http://placehold.it/500x200" class="card-img-top" />
-                        <div class="card-block">
-                            <h4 class="card-title">Card Title</h4>
-                            <p class="card-text">Here is some text for the card</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3"></div>
-            </div>
-        </div>
+        <container></container>
     </body>
 </html>

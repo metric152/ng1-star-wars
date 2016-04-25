@@ -5,33 +5,31 @@
 
     function Header($rootScope, swapiService){
 
-        function getResources(){
-            swapiService.resources().then(function(result){
-                this.resources = result;
+        function getResource(resource){
+            // Hit the endpoint and get data
+            swapiService[resource]().then(function(result){
+                // So we know the type of data
+                result['name'] = resource;
+                this.selectedResource = result;
+
+                // Send the data to the cards directive
+                $rootScope.$broadcast('resourceSelected', result);
             }.bind(this));
         }
 
-        function getResource(resource){
-            swapiService[resource]().then(function(result){
-                console.log( result );
-            });
-        }
-
-        function controller($scope){
+        function controller(){
             angular.extend(this, {
-                'resources': {},
-
-                'getResources': getResources,
+                'selectedResource': {},
                 'getResource': getResource
             });
-
-            this.getResources();
         }
 
         return {
             'restrict': 'E',
             'templateUrl': 'app/components/header/header.template.html',
-            'scope':{},
+            'scope':{
+                'resources': '='
+            },
             'controller': ['$scope', controller],
             'controllerAs': 'headerCtrl',
             'bindToController': true

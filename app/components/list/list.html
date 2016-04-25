@@ -1,0 +1,8 @@
+<div class="card">
+    <div class="card-block">
+        <h4 class="card-title">List of {{listCtrl.resource.name}}</h4>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li ng-repeat="item in listCtrl.resource.results" class="list-group-item"><a href="#" ng-click="listCtrl.loadItem(item)">{{item.name || item.title}}</a></li>
+    </ul>
+</div>
