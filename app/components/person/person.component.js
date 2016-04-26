@@ -8,27 +8,16 @@
         }
     });
 
-    Person.$inject = ['CardsSerivce'];
+    Person.$inject = ['CardsSerivce', 'LookupsFactory'];
 
-    function Person(CardsSerivce){
-        this.films = [];
-
-        this.viewHomeWorld = function(){
-            CardsSerivce.getResources([this.resource.homeworld]).then(function(result){
-                console.log( result );
-                CardsSerivce.addItem(result[0], 'planets');
-            });
-        }
-
-        // List the films
-        this.getFilms = function(){
-            CardsSerivce.getResources(this.resource.films).then( function(results){
-                this.films = results;
-            }.bind(this));
-        }
+    function Person(CardsSerivce, LookupsFactory){
+        LookupsFactory(this);
 
         this.$onInit = function($scope){
-            this.getFilms();
+            this.getFilms(this.resource.films);
+            this.getVehicles(this.resource.vehicles);
+            this.getStarships(this.resource.starships);
+            this.getPlanets([this.resource.homeworld]);
         }
     }
 })();

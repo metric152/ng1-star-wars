@@ -8,9 +8,14 @@
         }
     });
 
-    Planet.$inject = [];
+    Planet.$inject = ['CardsSerivce', 'LookupsFactory'];
 
-    function Planet(){
-        
+    function Planet(CardsSerivce, LookupsFactory){
+        LookupsFactory(this);
+
+        this.$onInit = function(){
+            this.getPeople(this.resource.residents);
+            this.getFilms(this.resource.films);
+        }
     }
 })();

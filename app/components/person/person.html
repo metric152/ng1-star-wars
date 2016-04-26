@@ -1,12 +1,13 @@
 <div class="card card-block">
-    {{personCtrl.resource}}
     <img alt="Place holder text" src="http://placehold.it/500x200" class="card-img-top" />
     <div class="card-block">
         <h4 class="card-title">{{personCtrl.resource.name}}</h4>
         <p class="card-text">Gender: {{personCtrl.resource.gender}}</p>
-        <p class="card-text">Height: {{personCtrl.resource.height}}</p>
-        <p class="card-text">Hair Color: {{personCtrl.resource.hair_color}}</p>
+        <p class="card-text">Height: {{personCtrl.resource.height}} cm</p>
+        <p class="card-text">Hair color: {{personCtrl.resource.hair_color}}</p>
+        <p class="card-text">Home world: <planets planets="personCtrl.planets"></planets></p>
         <p class="card-text">Films: <films films="personCtrl.films"></films></p>
-        <a href="" class="card-link" ng-click="personCtrl.viewHomeWorld()">View Homeworld</a>
+        <p class="card-text">Vehicles: <vehicles vehicles="personCtrl.vehicles"></vehicles></p>
+        <p class="card-text">Starships: <starships starships="personCtrl.starships"></starships></p>
     </div>
 </div>
