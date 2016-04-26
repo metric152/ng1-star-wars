@@ -9,6 +9,23 @@
 
         this.URI = 'http://swapi.co/api/';
 
+        function isItemInCache(key){
+            return !!cache[key];
+        }
+
+        function getItemFromCache(key){
+            if(isItemInCache(key)) {
+                return cache[key];
+            }
+            return null;
+        }
+        
+        function setItemInCache(key, value){
+            if(!cache[key]){
+                cache[key] = value;
+            }
+        }
+
         this.getResources = function(uriList){
             var deferred = $q.defer();
             var length = uriList.length;
@@ -21,15 +38,17 @@
             }
 
             uriList.forEach(function(uri){
-                if(cache[uri]){
-                    results.push(cache[uri]);
+                if(isItemInCache(uri)){
+                    results.push(getItemFromCache(uri));
                     isDone();
                 }
-                $http.get(uri).then( function(result){
-                    cache[uri] = result.data;
-                    results.push(cache[uri]);
-                    isDone();
-                })
+                else{
+                    $http.get(uri).then( function(result){
+                        setItemInCache(uri, result.data);
+                        results.push(result.data);
+                        isDone();
+                    });
+                }
             });
 
             return deferred.promise;
@@ -49,6 +68,11 @@
         * @param type
         **/
         this.addItem = function(item, type){
+            // See if we can cache the item
+            if(item['url']){
+                setItemInCache(item['url'], item);
+            }
+
             items.unshift({
                 'item': item,
                 'type': type

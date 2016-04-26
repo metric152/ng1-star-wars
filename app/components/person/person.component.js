@@ -16,13 +16,15 @@
         this.viewHomeWorld = function(){
             CardsSerivce.getResources([this.resource.homeworld]).then(function(result){
                 console.log( result );
-                CardsSerivce.addItem(result, 'planets');
+                CardsSerivce.addItem(result[0], 'planets');
             });
         }
 
         // List the films
         this.getFilms = function(){
-            console.log( this.resource.films );
+            CardsSerivce.getResources(this.resource.films).then( function(results){
+                this.films = results;
+            }.bind(this));
         }
 
         this.$onInit = function($scope){
