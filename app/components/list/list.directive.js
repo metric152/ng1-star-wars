@@ -4,6 +4,7 @@
     List.$inject = ['CardsSerivce'];
 
     function List(CardsSerivce){
+        
         function displayItem(item){
             CardsSerivce.addItem(item, this.resource.type);
         }

@@ -3,6 +3,7 @@
     <div class="col-md-6">
         <list ng-if="card.type == 'list'" resource="card.item"></list>
         <person ng-if="card.type == 'people'" resource="card.item"></person>
+        <planet ng-if="card.type == 'planets'" resource="card.item"></planet>
         <!-- <div class="card card-block">
             <img alt="Place holder text" src="http://placehold.it/500x200" class="card-img-top" />
             <div class="card-block">

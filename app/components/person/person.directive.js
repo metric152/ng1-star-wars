@@ -1,13 +1,30 @@
 (function(){
     StarWarsApi.directive( 'person' , Person);
 
-    Person.$inject = [];
+    Person.$inject = ['swapiService', 'CardsSerivce'];
 
-    function Person(){
+    function Person(swapiService, CardsSerivce){
+        function viewHomeWorld(){
+            CardsSerivce.getResource(this.resource.homeworld).then(function(result){
+                console.log( result );
+                CardsSerivce.addItem(result, 'planets');
+            });
+        }
+
+        // List the films
+        function getFilms(){
+            console.log( this.resource.films );
+        }
+
         function controller($scope){
             angular.extend(this, {
+                'films': [],
 
+                'viewHomeWorld': viewHomeWorld,
+                'getFilms': getFilms
             });
+
+            this.getFilms();
         }
 
         return {

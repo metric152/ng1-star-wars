@@ -1,10 +1,44 @@
 (function(){
     StarWarsApi.service( 'CardsSerivce' , CardsSerivce);
 
-    CardsSerivce.$inject = [];
+    CardsSerivce.$inject = ['$http', '$q'];
 
-    function CardsSerivce(){
+    function CardsSerivce($http){
         var items = [];
+        var films = {};
+
+        this.getFilms = function(uriList){
+            var deferred = $q.defer();
+            var length = uriList.length;
+            var results = [];
+
+            function isDone(){
+                if(--length == 0){
+                    deferred.resolve(results);
+                }
+            }
+
+            uriList.forEach(function(uri){
+                if(films[uri]){
+                    result.push(films[uri]);
+                    isDone();
+                }
+                $http.get(uri).then( function(result){
+                    films[uri] = result.data;
+                    result.push(films[uri]);
+                    isDone();
+                })
+            });
+
+            return deferred.promise;
+        }
+
+        // Get the uri resource
+        this.getResource = function(uri){
+            return $http.get(uri).then(function(result){
+                return result.data;
+            });
+        }
 
         // This will reset the list and clear everything else out
         this.resetList = function(item, type){
