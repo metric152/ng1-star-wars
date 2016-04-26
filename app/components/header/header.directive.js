@@ -1,16 +1,16 @@
 (function(){
     StarWarsApi.directive( 'header' , Header);
 
-    Header.$inject = ['CardsSerivce', 'swapiService'];
+    Header.$inject = ['CardsSerivce'];
 
-    function Header(CardsSerivce, swapiService){
+    function Header(CardsSerivce){
 
         function getResource(resource){
             // Hit the endpoint and get data
-            swapiService[resource]().then(function(result){
+            CardsSerivce.getResources([sprintf("%s%s",CardsSerivce.URI, resource)]).then(function(result){
                 // Store the type of list
-                result.type = resource;
-                CardsSerivce.resetList(result, 'list');
+                result[0].type = resource;
+                CardsSerivce.resetList(result[0], 'list');
             }.bind(this));
         }
 

@@ -1,13 +1,13 @@
 (function(){
     StarWarsApi.directive( 'container' , Container);
 
-    Container.$inject = ['swapiService'];
+    Container.$inject = ['CardsSerivce'];
 
-    function Container(swapiService){
+    function Container(CardsSerivce){
 
         function getResources(){
-            swapiService.resources().then(function(result){
-                this.resources = result;
+            CardsSerivce.getResources([CardsSerivce.URI]).then(function(result){
+                this.resources = result[0];
             }.bind(this));
         }
 

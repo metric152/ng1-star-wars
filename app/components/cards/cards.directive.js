@@ -1,9 +1,9 @@
 (function(){
     StarWarsApi.directive( 'cards' , Cards);
 
-    Cards.$inject = ['CardsSerivce', 'swapiService'];
+    Cards.$inject = ['CardsSerivce'];
 
-    function Cards(CardsSerivce, swapiService){
+    function Cards(CardsSerivce){
         function controller($scope){
             angular.extend(this, {
                 'items': CardsSerivce.getItems

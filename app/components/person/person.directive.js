@@ -1,11 +1,11 @@
 (function(){
     StarWarsApi.directive( 'person' , Person);
 
-    Person.$inject = ['swapiService', 'CardsSerivce'];
+    Person.$inject = ['CardsSerivce'];
 
-    function Person(swapiService, CardsSerivce){
+    function Person(CardsSerivce){
         function viewHomeWorld(){
-            CardsSerivce.getResource(this.resource.homeworld).then(function(result){
+            CardsSerivce.getResources([this.resource.homeworld]).then(function(result){
                 console.log( result );
                 CardsSerivce.addItem(result, 'planets');
             });

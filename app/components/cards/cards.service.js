@@ -3,11 +3,13 @@
 
     CardsSerivce.$inject = ['$http', '$q'];
 
-    function CardsSerivce($http){
+    function CardsSerivce($http, $q){
         var items = [];
-        var films = {};
+        var cache = {};
 
-        this.getFilms = function(uriList){
+        this.URI = 'http://swapi.co/api/';
+
+        this.getResources = function(uriList){
             var deferred = $q.defer();
             var length = uriList.length;
             var results = [];
@@ -19,25 +21,18 @@
             }
 
             uriList.forEach(function(uri){
-                if(films[uri]){
-                    result.push(films[uri]);
+                if(cache[uri]){
+                    results.push(cache[uri]);
                     isDone();
                 }
                 $http.get(uri).then( function(result){
-                    films[uri] = result.data;
-                    result.push(films[uri]);
+                    cache[uri] = result.data;
+                    results.push(cache[uri]);
                     isDone();
                 })
             });
 
             return deferred.promise;
-        }
-
-        // Get the uri resource
-        this.getResource = function(uri){
-            return $http.get(uri).then(function(result){
-                return result.data;
-            });
         }
 
         // This will reset the list and clear everything else out

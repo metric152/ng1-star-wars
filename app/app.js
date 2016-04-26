@@ -1,5 +1,5 @@
 (function(){
-    StarWarsApi = angular.module('StarWarsApi',['xyz.angular.swapi']);
+    StarWarsApi = angular.module('StarWarsApi',[]);
 
     StarWarsApi.run(angular.noop);
     StarWarsApi.$inject = [];
