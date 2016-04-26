@@ -1,16 +1,9 @@
 <div class="row" ng-repeat="card in cardsCtrl.items()">
     <div class="col-md-3"></div>
-    <div class="col-md-6">
-        <list ng-if="card.type == 'list'" resource="card.item"></list>
-        <person ng-if="card.type == 'people'" resource="card.item"></person>
-        <planet ng-if="card.type == 'planets'" resource="card.item"></planet>
-        <!-- <div class="card card-block">
-            <img alt="Place holder text" src="http://placehold.it/500x200" class="card-img-top" />
-            <div class="card-block">
-                <h4 class="card-title">Card Title</h4>
-                <p class="card-text">Here is some text for the card</p>
-            </div>
-        </div> -->
+    <div class="col-md-6" ng-switch on="card.type">
+        <list ng-switch-when="list" resource="card.item"></list>
+        <person ng-switch-when="people" resource="card.item"></person>
+        <planet ng-switch-when="planets" resource="card.item"></planet>
     </div>
     <div class="col-md-3"></div>
 </div>

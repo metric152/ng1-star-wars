@@ -1,11 +1,18 @@
 (function(){
-    StarWarsApi.directive( 'header' , Header);
+    StarWarsApi.component( 'header' , {
+        'templateUrl': 'app/components/header/header.template.html',
+        'controller': Header,
+        'controllerAs': 'headerCtrl',
+        'bindings': {
+            'resources': '<'
+        }
+    });
 
     Header.$inject = ['CardsSerivce'];
 
     function Header(CardsSerivce){
 
-        function getResource(resource){
+        this.getResource = function(resource){
             // Hit the endpoint and get data
             CardsSerivce.getResources([sprintf("%s%s",CardsSerivce.URI, resource)]).then(function(result){
                 // Store the type of list
@@ -13,22 +20,5 @@
                 CardsSerivce.resetList(result[0], 'list');
             }.bind(this));
         }
-
-        function controller(){
-            angular.extend(this, {
-                'getResource': getResource
-            });
-        }
-
-        return {
-            'restrict': 'E',
-            'templateUrl': 'app/components/header/header.template.html',
-            'scope':{
-                'resources': '='
-            },
-            'controller': ['$scope', controller],
-            'controllerAs': 'headerCtrl',
-            'bindToController': true
-        };
     }
 })();

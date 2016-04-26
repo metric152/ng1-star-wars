@@ -1,29 +1,19 @@
 (function(){
-    StarWarsApi.directive( 'list' , List);
+    StarWarsApi.component( 'list' , {
+        'templateUrl': 'app/components/list/list.html',
+        'controller': List,
+        'controllerAs': 'listCtrl',
+        'bindings': {
+            'resource': '<'
+        }
+    });
 
     List.$inject = ['CardsSerivce'];
 
     function List(CardsSerivce){
-        
-        function displayItem(item){
+
+        this.displayItem = function(item){
             CardsSerivce.addItem(item, this.resource.type);
         }
-
-        function controller($scope){
-            angular.extend(this, {
-                'displayItem': displayItem
-            });
-        }
-
-        return {
-            'restrict': 'E',
-            'templateUrl': 'app/components/list/list.html',
-            'scope':{
-                'resource': '='
-            },
-            'controller': ['$scope', controller],
-            'controllerAs': 'listCtrl',
-            'bindToController': true
-        };
     }
 })();

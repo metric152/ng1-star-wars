@@ -1,24 +1,16 @@
 (function(){
-    StarWarsApi.directive( 'planet' , Planet);
+    StarWarsApi.component( 'planet' , {
+        'templateUrl': 'app/components/planet/planet.html',
+        'controller': Planet,
+        'controllerAs': 'planetCtrl',
+        'bindings': {
+            'resource': '<'
+        }
+    });
 
     Planet.$inject = [];
 
     function Planet(){
-        function controller($scope){
-            angular.extend(this, {
-
-            });
-        }
-
-        return {
-            'restrict': 'E',
-            'templateUrl': 'app/components/planet/planet.html',
-            'scope':{
-                'resource': '='
-            },
-            'controller': ['$scope', controller],
-            'controllerAs': 'planetCtrl',
-            'bindToController': true
-        };
+        
     }
 })();
