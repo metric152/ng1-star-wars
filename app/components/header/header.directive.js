@@ -1,25 +1,21 @@
 (function(){
     StarWarsApi.directive( 'header' , Header);
 
-    Header.$inject = ['$rootScope', 'swapiService'];
+    Header.$inject = ['CardsSerivce', 'swapiService'];
 
-    function Header($rootScope, swapiService){
+    function Header(CardsSerivce, swapiService){
 
         function getResource(resource){
             // Hit the endpoint and get data
             swapiService[resource]().then(function(result){
-                // So we know the type of data
-                result['name'] = resource;
-                this.selectedResource = result;
-
-                // Send the data to the cards directive
-                $rootScope.$broadcast('resourceSelected', result);
+                // Store the type of list
+                result.type = resource;
+                CardsSerivce.resetList(result, 'list');
             }.bind(this));
         }
 
         function controller(){
             angular.extend(this, {
-                'selectedResource': {},
                 'getResource': getResource
             });
         }

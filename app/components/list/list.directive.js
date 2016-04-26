@@ -1,11 +1,11 @@
 (function(){
     StarWarsApi.directive( 'list' , List);
 
-    List.$inject = ['swapiService'];
+    List.$inject = ['CardsSerivce'];
 
-    function List(swapiService){
-        function displayItem(type, item){
-            console.log( type, item );
+    function List(CardsSerivce){
+        function displayItem(item){
+            CardsSerivce.addItem(item, this.resource.type);
         }
 
         function controller($scope){

@@ -1,19 +1,13 @@
 (function(){
     StarWarsApi.directive( 'cards' , Cards);
 
-    Cards.$inject = ['$rootScope', 'swapiService'];
+    Cards.$inject = ['CardsSerivce', 'swapiService'];
 
-    function Cards($rootScope, swapiService){
+    function Cards(CardsSerivce, swapiService){
         function controller($scope){
             angular.extend(this, {
-                'items': []
+                'items': CardsSerivce.getItems
             });
-
-            // Listen for the data broadcast
-            $rootScope.$on('resourceSelected', function(event, data){
-                this.items.unshift(data);
-                console.log( data );
-            }.bind(this));
         }
 
         return {
