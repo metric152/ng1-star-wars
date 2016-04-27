@@ -7,11 +7,11 @@
         var lookups = function(classObject){
 
             // Destination objects for the calls
-            classObject.films = [];
-            classObject.vehicles = [];
-            classObject.starships = [];
-            classObject.planets = [];
-            classObject.people = [];
+            classObject.films = null;
+            classObject.vehicles = null;
+            classObject.starships = null;
+            classObject.planets = null;
+            classObject.people = null;
 
             // List the films
             classObject.getFilms = function(films){

@@ -1,1 +1,3 @@
+<i ng-if="!tagsCtrl.tags" class="fa fa-lg fa-spin fa-empire"></i>
+<i ng-if="tagsCtrl.tags.length == 0" class="fa fa-lg fa-rebel"> n/a</i>
 <button type="button" class="btn btn-info btn-sm" ng-repeat="tag in tagsCtrl.tags" ng-click="tagsCtrl.displayItem(tag)">{{tag.name || tag.title}}</button>

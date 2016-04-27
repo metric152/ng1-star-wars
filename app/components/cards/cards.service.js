@@ -19,7 +19,7 @@
             }
             return null;
         }
-        
+
         function setItemInCache(key, value){
             if(!cache[key]){
                 cache[key] = value;
@@ -35,6 +35,11 @@
                 if(--length == 0){
                     deferred.resolve(results);
                 }
+            }
+
+            // If we give this an empty list we need it to finish
+            if(length == 0){
+                deferred.resolve(results);
             }
 
             uriList.forEach(function(uri){
