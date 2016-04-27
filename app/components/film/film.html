@@ -3,8 +3,8 @@
     <div class="card-block">
         <h4 class="card-title">{{filmCtrl.resource.title}}</h4>
         <p class="card-text">Crawl: {{filmCtrl.resource.opening_crawl}}</p>
-        <p class="card-text">Characters: <people people="filmCtrl.people"></people></p>
-        <p class="card-text">Planets: <planets planets="filmCtrl.planets"></planets></p>
-        <p class="card-text">Starships: <starships starships="filmCtrl.starships"></starships></p>
+        <p class="card-text">Characters: <tags type="'people'" tags="filmCtrl.people"></tags></p>
+        <p class="card-text">Planets: <tags type="'planets'" tags="filmCtrl.planets"></tags></p>
+        <p class="card-text">Starships: <tags type="'starships'" tags="filmCtrl.starships"></tags></p>
     </div>
 </div>

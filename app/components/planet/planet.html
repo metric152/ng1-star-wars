@@ -5,7 +5,7 @@
         <p class="card-text">Climate: {{planetCtrl.resource.climate}}</p>
         <p class="card-text">Terrain: {{planetCtrl.resource.terrain}}</p>
         <p class="card-text">Population: {{planetCtrl.resource.population | number: 0}}</p>
-        <p class="card-text">Residents: <people people="planetCtrl.people"></people></p>
-        <p class="card-text">Films: <films films="planetCtrl.films"></films></p>
+        <p class="card-text">Residents: <tags type="'people'" tags="planetCtrl.people"></tags></p>
+        <p class="card-text">Films: <tags type="'films'" tags="planetCtrl.films"></tags></p>
     </div>
 </div>

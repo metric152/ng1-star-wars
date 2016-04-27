@@ -8,15 +8,15 @@
         }
     });
 
-    Starship.$inject = [];
+    Starship.$inject = ['LookupsFactory'];
 
-    function Starship(){
-        // TODO Add films
-        // TODO Add pilots
-        
+    function Starship(LookupsFactory){
+        LookupsFactory(this);
+
         // New lifecycle call. Replaces the controller function
         this.$onInit = function(){
-
+            this.getFilms(this.resource.films);
+            this.getPeople(this.resource.pilots);
         }
     }
 })();
