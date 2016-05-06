@@ -12,11 +12,11 @@
 
     function Header(CardsSerivce){
 
-        this.getResource = function(resource){
+        this.getResource = function(type, resource){
             // Hit the endpoint and get data
-            CardsSerivce.getResources([sprintf("%s%s",CardsSerivce.URI, resource)]).then(function(result){
+            CardsSerivce.getResources([resource]).then(function(result){
                 // Store the type of list
-                result[0].type = resource;
+                result[0].type = type;
                 CardsSerivce.resetList(result[0], 'list');
             }.bind(this));
         }

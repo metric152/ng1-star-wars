@@ -1,0 +1,22 @@
+{
+  "name": "ng1-star-wars",
+  "version": "1.0.0",
+  "description": "Example using angular 1 + bootstrap 4",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metric152/ng1-star-wars.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/metric152/ng1-star-wars/issues"
+  },
+  "homepage": "https://github.com/metric152/ng1-star-wars#readme",
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  }
+}
