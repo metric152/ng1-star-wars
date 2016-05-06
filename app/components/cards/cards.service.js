@@ -78,7 +78,7 @@
                 setItemInCache(item['url'], item);
             }
 
-            items.unshift({
+            items.push({
                 'item': item,
                 'type': type
             });
