@@ -5,7 +5,7 @@
     StarWarsApi.$inject = [];
 
     // Manually bootstrap the app: https://stackoverflow.com/a/16539428/122236
-    angular.element(document).ready(function() {
-        angular.bootstrap(document, ['StarWarsApi']);
-    });
+    // angular.element(document).ready(function() {
+    //     angular.bootstrap(document, ['StarWarsApi']);
+    // });
 })();
