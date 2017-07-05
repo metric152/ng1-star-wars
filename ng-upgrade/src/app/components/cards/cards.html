@@ -1,0 +1,13 @@
+<div class="row" ng-repeat="card in cardsCtrl.items()">
+    <div class="col-md-3"></div>
+    <div class="col-md-6" ng-switch on="card.type">
+        <list ng-switch-when="list" resource="card.item"></list>
+        <person ng-switch-when="people" resource="card.item"></person>
+        <planet ng-switch-when="planets" resource="card.item"></planet>
+        <film ng-switch-when="films" resource="card.item"></film>
+        <species ng-switch-when="species" resource="card.item"></species>
+        <vehicle ng-switch-when="vehicles" resource="card.item"></vehicle>
+        <starship ng-switch-when="starships" resource="card.item"></starship>
+    </div>
+    <div class="col-md-3"></div>
+</div>
