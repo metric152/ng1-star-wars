@@ -1,0 +1,3 @@
+<i *ngIf="!tags" class="fa fa-lg fa-spin fa-empire"></i>
+<i *ngIf="tags && tags.length == 0" class="fa fa-lg fa-rebel"> n/a</i>
+<button type="button" class="btn btn-info btn-sm" *ngFor="let tag of tags" (click)="displayItem(tag)">{{tag.name || tag.title}}</button>
