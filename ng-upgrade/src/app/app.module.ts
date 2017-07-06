@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { PersonComponent } from './person/person.component';
 
-import { UpgradeModule } from '@angular/upgrade/static';
+import { UpgradeModule, downgradeComponent } from '@angular/upgrade/static';
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import { UpgradeModule } from '@angular/upgrade/static';
   providers: []
   // bootstrap: [AppComponent]
 })
+
 export class AppModule {
   constructor(private upgrade:UpgradeModule){ }
 
