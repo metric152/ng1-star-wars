@@ -8,9 +8,9 @@
         }
     });
 
-    Planet.$inject = ['CardsSerivce', 'LookupsFactory'];
+    Planet.$inject = ['CardsService', 'LookupsFactory'];
 
-    function Planet(CardsSerivce, LookupsFactory){
+    function Planet(CardsService, LookupsFactory){
         LookupsFactory(this);
 
         this.$onInit = function(){

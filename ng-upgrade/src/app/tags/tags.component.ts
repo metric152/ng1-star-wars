@@ -1,4 +1,4 @@
-import { Component, OnInit , Input} from '@angular/core';
+import { Component, OnInit , Input, Inject} from '@angular/core';
 
 @Component({
   selector: 'tags',
@@ -13,14 +13,18 @@ export class TagsComponent implements OnInit {
     public type: string;
 
   // Inject the service into the class
-  constructor() { }
+  constructor(@Inject('CardsService') cardsService) { }
 
-  ngOnInit() {
-      console.log( this.tags );
-  }
+  ngOnInit() { }
 
+  /**
+   * Load the selected item
+   * @param  {Object} tag Selected Object
+   * @return {void}
+   */
   public displayItem(tag) {
       // Add it to the service
+      console.log( tag );
   }
 
 }

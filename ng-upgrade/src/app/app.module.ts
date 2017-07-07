@@ -1,14 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 // import { PersonComponent } from './person/person.component';
 
 import { UpgradeModule, downgradeComponent } from '@angular/upgrade/static';
-import * as angular from 'angular';
 import { TagsComponent } from './tags/tags.component';
 
+import * as angular from 'angular';
+import { upgradeAdapter } from './upgrade-adapter';
+
 const STARWARS_API = 'StarWarsApi';
+
+declare var angular: angular.IAngularStatic;
+
+export function getCardsService($injector: any){
+    return $injector.get('CardsService');
+}
+
 
 @NgModule({
   declarations: [
@@ -19,9 +29,14 @@ const STARWARS_API = 'StarWarsApi';
   ],
   imports: [
     BrowserModule,
-    UpgradeModule
+    UpgradeModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [{
+      'provide': 'CardsService',
+      'useFactory': getCardsService,
+      'deps': ['$injector']
+  }],
   entryComponents: [
       TagsComponent
     //   PersonComponent
@@ -30,14 +45,15 @@ const STARWARS_API = 'StarWarsApi';
 })
 
 export class AppModule {
-  constructor(private upgrade:UpgradeModule){ }
+  constructor(private upgradeModule:UpgradeModule){ }
 
   ngDoBootstrap() {
+
     // you must downgrade the components before bootstrapping the application
     // https://angular.io/guide/upgrade
-    angular.module(STARWARS_API).directive('tags', downgradeComponent({component: TagsComponent}) as angular.IDirectiveFactory);
+    angular.module(STARWARS_API).directive('tags', downgradeComponent({component: TagsComponent}));
+
     // now bootstrap the app
-    this.upgrade.bootstrap(document.body, [STARWARS_API]);
-    console.log( "downgrade complete" );
+    this.upgradeModule.bootstrap(document.body, [STARWARS_API], {'strictDi': true});
   }
  }

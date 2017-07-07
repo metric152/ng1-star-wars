@@ -1,5 +1,5 @@
-(function(){
-    StarWarsApi.component( 'list' , {
+(function() {
+    StarWarsApi.component('list', {
         'templateUrl': 'app/components/list/list.html',
         'controller': List,
         'controllerAs': 'listCtrl',
@@ -8,12 +8,12 @@
         }
     });
 
-    List.$inject = ['CardsSerivce'];
+    List.$inject = ['CardsService'];
 
-    function List(CardsSerivce){
+    function List(CardsService) {
 
-        this.displayItem = function(item){
-            CardsSerivce.addItem(item, this.resource.type);
+        this.displayItem = function(item) {
+            CardsService.addItem(item, this.resource.type);
         }
     }
 })();
