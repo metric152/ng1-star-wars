@@ -9,6 +9,7 @@ import { UpgradeModule, downgradeComponent } from '@angular/upgrade/static';
 import { TagsComponent } from './tags/tags.component';
 
 import * as angular from 'angular';
+// Not used at the moment
 import { upgradeAdapter } from './upgrade-adapter';
 
 const STARWARS_API = 'StarWarsApi';

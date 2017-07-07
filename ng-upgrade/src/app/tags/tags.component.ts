@@ -24,7 +24,6 @@ export class TagsComponent implements OnInit {
    */
   public displayItem(tag) {
       // Add it to the service
-      console.log( tag );
       this.cardsService.addItem(tag, this.type);
   }
 
