@@ -6,6 +6,6 @@
     <div class="card-block">
         <p class="card-text">Model: {{vehicleCtrl.resource.model}}</p>
         <p class="card-text">Manufacturer: {{vehicleCtrl.resource.manufacturer}}</p>
-        <p class="card-text">Films: <tags type="'films'" tags="vehicleCtrl.films"></tags></p>
+        <p class="card-text">Films: <tags [type]="'films'" [tags]="vehicleCtrl.films"></tags></p>
     </div>
 </div>

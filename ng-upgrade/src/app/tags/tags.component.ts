@@ -13,7 +13,7 @@ export class TagsComponent implements OnInit {
     public type: string;
 
   // Inject the service into the class
-  constructor(@Inject('CardsService') cardsService) { }
+  constructor(@Inject('CardsService') private cardsService) { }
 
   ngOnInit() { }
 
@@ -25,6 +25,7 @@ export class TagsComponent implements OnInit {
   public displayItem(tag) {
       // Add it to the service
       console.log( tag );
+      this.cardsService.addItem(tag, this.type);
   }
 
 }

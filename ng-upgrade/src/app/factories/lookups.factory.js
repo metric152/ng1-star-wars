@@ -1,9 +1,9 @@
 (function(){
     StarWarsApi.factory('LookupsFactory', Lookups);
 
-    Lookups.$inject = ['CardsSerivce'];
+    Lookups.$inject = ['CardsService'];
 
-    function Lookups(CardsSerivce){
+    function Lookups(CardsService){
         var lookups = function(classObject){
 
             // Destination objects for the calls
@@ -15,35 +15,35 @@
 
             // List the films
             classObject.getFilms = function(films){
-                CardsSerivce.getResources(films).then( function(results){
+                CardsService.getResources(films).then( function(results){
                     classObject.films = results;
                 });
             }
 
             // Get the vehicles
             classObject.getVehicles = function(vehicles){
-                CardsSerivce.getResources(vehicles).then( function(results){
+                CardsService.getResources(vehicles).then( function(results){
                     classObject.vehicles = results;
                 });
             }
 
             // Get starships
             classObject.getStarships = function(starships){
-                CardsSerivce.getResources(starships).then( function(results){
+                CardsService.getResources(starships).then( function(results){
                     classObject.starships = results;
                 });
             }
 
             // Get planets
             classObject.getPlanets = function(planets){
-                CardsSerivce.getResources(planets).then( function(results){
+                CardsService.getResources(planets).then( function(results){
                     classObject.planets = results;
                 });
             }
 
             // Get people
             classObject.getPeople = function(people){
-                CardsSerivce.getResources(people).then( function(results){
+                CardsService.getResources(people).then( function(results){
                     classObject.people = results;
                 });
             }

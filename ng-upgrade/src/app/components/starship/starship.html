@@ -7,7 +7,7 @@
         <p class="card-text">Model: {{starshipCtrl.resource.model}}</p>
         <p class="card-text">Manufacturer: {{starshipCtrl.resource.manufacturer}}</p>
         <p class="card-text">Starship class: {{starshipCtrl.resource.starship_class}}</p>
-        <p class="card-text">Films: <tags type="'films'" tags="starshipCtrl.films"></tags></p>
-        <p class="card-text">Pilots: <tags type="'people'" tags="starshipCtrl.people"></tags></p>
+        <p class="card-text">Films: <tags [type]="'films'" [tags]="starshipCtrl.films"></tags></p>
+        <p class="card-text">Pilots: <tags [type]="'people'" [tags]="starshipCtrl.people"></tags></p>
     </div>
 </div>

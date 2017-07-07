@@ -5,8 +5,8 @@
     <img alt="Place holder text" src="http://placehold.it/500x200" class="card-img-top" />
     <div class="card-block">
         <p class="card-text">Crawl: {{filmCtrl.resource.opening_crawl}}</p>
-        <p class="card-text">Characters: <tags type="'people'" tags="filmCtrl.people"></tags></p>
-        <p class="card-text">Planets: <tags type="'planets'" tags="filmCtrl.planets"></tags></p>
-        <p class="card-text">Starships: <tags type="'starships'" tags="filmCtrl.starships"></tags></p>
+        <p class="card-text">Characters: <tags [type]="'people'" [tags]="filmCtrl.people"></tags></p>
+        <p class="card-text">Planets: <tags [type]="'planets'" [tags]="filmCtrl.planets"></tags></p>
+        <p class="card-text">Starships: <tags [type]="'starships'" [tags]="filmCtrl.starships"></tags></p>
     </div>
 </div>
