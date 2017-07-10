@@ -1,43 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, forwardRef } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 // import { PersonComponent } from './person/person.component';
 
-import { UpgradeModule, downgradeComponent } from '@angular/upgrade/static';
 import { TagsComponent } from './tags/tags.component';
 
 import * as angular from 'angular';
-// Not used at the moment
-import { upgradeAdapter } from './upgrade-adapter';
+import { UpgradeAdapter } from '@angular/upgrade';
 
 const STARWARS_API = 'StarWarsApi';
 const CARDS_SERVICE = 'CardsService';
 
-///////////////////////////////////////////////////////////////////////////////
-// This is for setting up the ng1 service to be injected into a ng component //
-///////////////////////////////////////////////////////////////////////////////
-
-// https://angular.io/guide/upgrade#why-declare-angular-as-angulariangularstatic
-declare var angular: angular.IAngularStatic;
-
-// Fix a typescript error for the card service
-export function getCardsService($injector: any){
-    return $injector.get(CARDS_SERVICE);
-}
-
-// https://angular.io/api/upgrade/static/UpgradeModule#upgrading-an-angular-1-service
-export const cardsService = {
-    'provide': CARDS_SERVICE,
-    'useFactory': getCardsService,
-    'deps': ['$injector']
-};
-
-///////////////////////////////////////////////////////////////////////////////
-// This is for setting up the ng1 service to be injected into a ng component //
-///////////////////////////////////////////////////////////////////////////////
-
+// Upgrade adapter must point to the app module
+// forwardRef stops circular references
+export const upgradeAdapter = new UpgradeAdapter(forwardRef(() => AppModule));
 
 @NgModule({
   declarations: [
@@ -48,10 +26,9 @@ export const cardsService = {
   ],
   imports: [
     BrowserModule,
-    UpgradeModule,
     HttpModule
   ],
-  providers: [cardsService],
+  providers: [],
   entryComponents: [
       TagsComponent
     //   PersonComponent
@@ -60,15 +37,16 @@ export const cardsService = {
 })
 
 export class AppModule {
-  constructor(private upgradeModule:UpgradeModule){ }
+  constructor(){ }
 
   ngDoBootstrap() {
     // you must downgrade the components before bootstrapping the application
-    // https://angular.io/guide/upgrade#using-angular-components-from-angularjs-code
-    angular.module(STARWARS_API).directive('tags', downgradeComponent({component: TagsComponent}));
+    angular.module(STARWARS_API).directive('tags', upgradeAdapter.downgradeNg2Component(TagsComponent));
+
+    // Providers are automatically added to the providers array if you use the upgradeAdapter
+    upgradeAdapter.upgradeNg1Provider(CARDS_SERVICE);
 
     // now bootstrap the app
-    // https://angular.io/guide/upgrade#bootstrapping-hybrid-applications
-    this.upgradeModule.bootstrap(document.body, [STARWARS_API], {'strictDi': true});
+    upgradeAdapter.bootstrap(document.body, [STARWARS_API], {'strictDi': true});
   }
  }
