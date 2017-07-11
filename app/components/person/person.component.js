@@ -8,9 +8,9 @@
         }
     });
 
-    Person.$inject = ['CardsSerivce', 'LookupsFactory'];
+    Person.$inject = ['CardsService', 'LookupsFactory'];
 
-    function Person(CardsSerivce, LookupsFactory){
+    function Person(CardsService, LookupsFactory){
         LookupsFactory(this);
 
         this.$onInit = function($scope){

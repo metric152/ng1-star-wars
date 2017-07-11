@@ -5,9 +5,9 @@
         'controllerAs': 'cardsCtrl'
     });
 
-    Cards.$inject = ['CardsSerivce'];
+    Cards.$inject = ['CardsService'];
 
-    function Cards(CardsSerivce){
-        this.items = CardsSerivce.getItems;
+    function Cards(CardsService){
+        this.items = CardsService.getItems;
     }
 })();

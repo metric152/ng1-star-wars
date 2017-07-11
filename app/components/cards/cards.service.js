@@ -1,9 +1,9 @@
 (function() {
-    StarWarsApi.service('CardsSerivce', CardsSerivce);
+    StarWarsApi.service('CardsService', CardsService);
 
-    CardsSerivce.$inject = ['$http', '$q'];
+    CardsService.$inject = ['$http', '$q'];
 
-    function CardsSerivce($http, $q) {
+    function CardsService($http, $q) {
         var items = [];
         var cache = {};
         var header = null;

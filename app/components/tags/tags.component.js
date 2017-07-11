@@ -9,11 +9,11 @@
         }
     });
 
-    Tags.$inject = ['CardsSerivce'];
+    Tags.$inject = ['CardsService'];
 
-    function Tags(CardsSerivce){
+    function Tags(CardsService){
         this.displayItem = function(item){
-            CardsSerivce.addItem(item, this.type);
+            CardsService.addItem(item, this.type);
         }
     }
 })();

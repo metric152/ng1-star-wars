@@ -8,12 +8,12 @@
         }
     });
 
-    List.$inject = ['CardsSerivce'];
+    List.$inject = ['CardsService'];
 
-    function List(CardsSerivce){
+    function List(CardsService){
 
         this.displayItem = function(item){
-            CardsSerivce.addItem(item, this.resource.type);
+            CardsService.addItem(item, this.resource.type);
         }
     }
 })();

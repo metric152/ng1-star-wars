@@ -8,16 +8,16 @@
         }
     });
 
-    Header.$inject = ['CardsSerivce'];
+    Header.$inject = ['CardsService'];
 
-    function Header(CardsSerivce){
+    function Header(CardsService){
 
         this.getResource = function(type, resource){
             // Hit the endpoint and get data
-            CardsSerivce.getResources([resource]).then(function(result){
+            CardsService.getResources([resource]).then(function(result){
                 // Store the type of list
                 result[0].type = type;
-                CardsSerivce.resetList(result[0], 'list');
+                CardsService.resetList(result[0], 'list');
             }.bind(this));
         }
     }

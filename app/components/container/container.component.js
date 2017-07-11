@@ -5,13 +5,13 @@
         'controllerAs': 'containerCtrl'
     });
 
-    Container.$inject = ['CardsSerivce'];
+    Container.$inject = ['CardsService'];
 
-    function Container(CardsSerivce){
+    function Container(CardsService){
         this.resources = {};
 
         this.getResources = function(){
-            CardsSerivce.getResources([CardsSerivce.URI]).then(function(result){
+            CardsService.getResources([CardsService.URI]).then(function(result){
                 this.resources = result[0];
             }.bind(this));
         }
