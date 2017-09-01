@@ -24,7 +24,21 @@
             "styles.css"
         ],
         "scripts": [
-            "./app/app.js"
+            "bower_components/sprintf/dist/sprintf.min.js",
+            "bower_components/angular/angular.min.js",
+            "app/app.js",
+            "app/factories/lookups.factory.js",
+            "app/components/container/container.component.js",
+            "app/components/header/header.component.js",
+            "app/components/cards/cards.component.js",
+            "app/components/cards/cards.service.js",
+            "app/components/list/list.component.js",
+            "app/components/person/person.component.js",
+            "app/components/planet/planet.component.js",
+            "app/components/film/film.component.js",
+            "app/components/starship/starship.component.js",
+            "app/components/vehicle/vehicle.component.js",
+            "app/components/species/species.component.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {
