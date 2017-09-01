@@ -21,7 +21,11 @@
         "testTsconfig": "tsconfig.spec.json",
         "prefix": "app",
         "styles": [
-            "styles.css"
+            "styles.css",
+            "bower_components/bootstrap/dist/css/bootstrap.min.css",
+            "bower_components/font-awesome/css/font-awesome.min.css",
+            "app/components/list/list.css",
+            "app/components/header/header.css"
         ],
         "scripts": [
             "bower_components/sprintf/dist/sprintf.min.js",
