@@ -42,7 +42,8 @@
             "app/components/film/film.component.js",
             "app/components/starship/starship.component.js",
             "app/components/vehicle/vehicle.component.js",
-            "app/components/species/species.component.js"
+            "app/components/species/species.component.js",
+            "app/components/upgrade-me/upgrade-me.component.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {
