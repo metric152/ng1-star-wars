@@ -30,7 +30,7 @@
         "scripts": [
             "bower_components/sprintf/dist/sprintf.min.js",
             "../node_modules/angular/angular.min.js",
-            "../node_modules/angular-route/angular-route.min.js",
+            "../node_modules/@uirouter/angularjs/release/angular-ui-router.min.js",
             "app/app.js",
             "app/factories/lookups.factory.js",
             "app/components/container/container.component.js",

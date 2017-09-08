@@ -1,14 +1,24 @@
 (function() {
-    StarWarsApi = angular.module('StarWarsApi', ['ngRoute']);
+    StarWarsApi = angular.module('StarWarsApi', ['ui.router']);
 
     StarWarsApi.run(angular.noop).config(configure);
-    StarWarsApi.$inject = ['$routeProvider'];
+    StarWarsApi.$inject = ['$stateProvider'];
 
-    configure.$inject = ['$routeProvider', '$locationProvider'];
-    function configure($routeProvider, $locationProvider){
+    configure.$inject = ['$stateProvider', '$locationProvider'];
+    function configure($stateProvider, $locationProvider){
 
-        $routeProvider.when('/category/:type',{
-            'template': '<cards></cards>'
+        $stateProvider.state({
+            'name': 'category',
+            'url': '/category/{type}',
+            'component': 'cards',
+            'resolve': {
+                'results': ['CardsService', '$transition$', function(CardsService, $transition$){
+                    return CardsService.getResources([CardsService.buildUrl($transition$.params().type)]);
+                }],
+                'type': ['$transition$', function($transition$){
+                    return $transition$.params().type;
+                }]
+            }
         });
 
         // use the HTML5 History API

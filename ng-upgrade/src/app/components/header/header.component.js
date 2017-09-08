@@ -8,12 +8,11 @@
         }
     });
 
-    Header.$inject = ['$routeParams','CardsService'];
+    Header.$inject = ['$uiRouterGlobals'];
 
-    function Header($routeParams, CardsService){
-
+    function Header($uiRouterGlobals){
         this.isActive = function(key){
-            return $routeParams.type === key;
+            return key === $uiRouterGlobals.params.type;
         }
     }
 })();
