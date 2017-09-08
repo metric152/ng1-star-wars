@@ -29,7 +29,8 @@
         ],
         "scripts": [
             "bower_components/sprintf/dist/sprintf.min.js",
-            "bower_components/angular/angular.min.js",
+            "../node_modules/angular/angular.min.js",
+            "../node_modules/angular-route/angular-route.min.js",
             "app/app.js",
             "app/factories/lookups.factory.js",
             "app/components/container/container.component.js",

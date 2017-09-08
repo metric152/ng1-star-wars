@@ -27,6 +27,10 @@
             }
         }
 
+        this.buildUrl = function(type){
+            return sprintf("%s%s/", this.URI, type);
+        }
+
         this.getResources = function(uriList) {
             var deferred = $q.defer();
             var length = uriList.length;

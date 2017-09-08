@@ -2,6 +2,6 @@
     <p class="lead">Welcome to the Star Wars API browser. Use the buttons below to pick a starting point.</p>
     <hr class="m-y-2" />
     <p class="lead">
-        <button ng-repeat="(key, value) in headerCtrl.resources" ng-click="headerCtrl.getResource(key, value)" class="btn btn-primary-outline">{{key}}</button>
+        <a ng-repeat="(key, value) in headerCtrl.resources track by $index" ng-href="/category/{{key}}" class="btn btn-primary-outline" ng-class="{'active': headerCtrl.isActive(key)}" >{{key}}</a>
     </p>
 </div>

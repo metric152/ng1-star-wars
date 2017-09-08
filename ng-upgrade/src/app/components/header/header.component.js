@@ -8,17 +8,12 @@
         }
     });
 
-    Header.$inject = ['CardsService'];
+    Header.$inject = ['$routeParams','CardsService'];
 
-    function Header(CardsService){
+    function Header($routeParams, CardsService){
 
-        this.getResource = function(type, resource){
-            // Hit the endpoint and get data
-            CardsService.getResources([resource]).then(function(result){
-                // Store the type of list
-                result[0].type = type;
-                CardsService.resetList(result[0], 'list');
-            }.bind(this));
+        this.isActive = function(key){
+            return $routeParams.type === key;
         }
     }
 })();
