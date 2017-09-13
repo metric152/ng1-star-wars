@@ -19,6 +19,10 @@
                     return $transition$.params().type;
                 }]
             }
+        }).state({
+            'name': 'sink',
+            'url': '/*path',
+            'template': ''
         });
 
         // use the HTML5 History API

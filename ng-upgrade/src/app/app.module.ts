@@ -7,18 +7,26 @@ import { AppComponent } from './app.component';
 
 import { TagsComponent } from './tags/tags.component';
 
-import * as angular from 'angular';
+// import * as angular from 'angular';
 import { UpgradeAdapter } from '@angular/upgrade';
 
 import { UpgradeWrapperComponent } from './upgrade-wrapper/upgrade-wrapper.component';
 // import { UpgradeWrapper } from './upgradewrapper';
 
+import { FutureComponent } from './future/future.component';
+
+import { RouterModule, Routes } from '@angular/router';
+
 const STARWARS_API = 'StarWarsApi';
 const CARDS_SERVICE = 'CardsService';
 
 // Upgrade adapter must point to the app module
-// forwardRef stops circular references
 export const upgradeAdapter = new UpgradeAdapter(forwardRef(() => AppModule));
+
+const appRoutes : Routes = [
+    {'path': 'future', 'component': FutureComponent},
+    {'path': '', 'loadChildren':'./angularjs.module#AngularJSModule'}
+];
 
 // This works without AOT
 export function loadNg1Component1(adapter, component){
@@ -32,23 +40,25 @@ export function loadNg1Component1(adapter, component){
 // export const upgradedComponent = loadNg1Component1(upgradeAdapter, 'upgrade');
 
 @NgModule({
-  // schemas: [NO_ERRORS_SCHEMA],
+  schemas: [NO_ERRORS_SCHEMA],
   declarations: [
     AppComponent,
     TagsComponent,
+    FutureComponent,
     // upgradedComponent
     UpgradeWrapperComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   entryComponents: [
       TagsComponent
     //   PersonComponent
-  ]
-  // bootstrap: [AppComponent]
+],
+  bootstrap: [AppComponent]
 })
 
 export class AppModule {
@@ -70,12 +80,12 @@ export class AppModule {
     // upgradeAdapter.upgradeNg1Component('upgrade');
 
     // you must downgrade the components before bootstrapping the application
-    angular.module(STARWARS_API).directive('tags', upgradeAdapter.downgradeNg2Component(TagsComponent));
+    // angular.module(STARWARS_API).directive('tags', upgradeAdapter.downgradeNg2Component(TagsComponent));
 
     // Providers are automatically added to the providers array if you use the upgradeAdapter
-    upgradeAdapter.upgradeNg1Provider(CARDS_SERVICE);
+    // upgradeAdapter.upgradeNg1Provider(CARDS_SERVICE);
 
     // now bootstrap the app
-    upgradeAdapter.bootstrap(document.body, [STARWARS_API], {'strictDi': true});
+    // upgradeAdapter.bootstrap(document.body, [STARWARS_API], {'strictDi': true});
   }
  }
