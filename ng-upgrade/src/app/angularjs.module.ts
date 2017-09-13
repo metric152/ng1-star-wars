@@ -22,7 +22,7 @@ export function getService($injector: any){
   ],
   providers:[{
       'provide': CARDS_SERVICE,
-      'useFactory': getService,
+      'useFactory': getService, // Don't use a function here. just reference one
       'deps': ['$injector']
   }],
   imports: [

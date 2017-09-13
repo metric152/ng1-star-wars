@@ -3,5 +3,6 @@
     <hr class="m-y-2" />
     <p class="lead">
         <a ng-repeat="(key, value) in headerCtrl.resources track by $index" ng-href="category/{{key}}" ng-class="{'active': headerCtrl.isActive(key)}" class="btn btn-primary-outline">{{key}}</a>
+        <a href="/future" class="btn btn-primary-outline">future</a>
     </p>
 </div>
